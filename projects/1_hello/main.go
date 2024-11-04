@@ -1,7 +1,13 @@
 package main
 
-// здесь надо написать код
+import (
+	"net/http"
+)
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello, web!"))
+}
 func main() {
-	// и здесь тоже
+	http.HandleFunc("/", handler)
+	_ = http.ListenAndServe(":8080", nil)
 }
